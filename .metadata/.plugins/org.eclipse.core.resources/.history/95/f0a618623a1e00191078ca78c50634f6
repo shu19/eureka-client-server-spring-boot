@@ -1,0 +1,5 @@
+package com.mm.eureka.eurekaclient;
+
+public class ClientController {
+
+}

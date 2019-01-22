@@ -1,0 +1,8 @@
+package com.mm.eureka.helloworldservice.resource;
+
+
+@RestController
+@RequestMapping("/accounts")
+public class HelloWorldResource {
+
+}
