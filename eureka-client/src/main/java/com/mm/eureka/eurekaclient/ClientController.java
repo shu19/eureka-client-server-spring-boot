@@ -2,21 +2,23 @@ package com.mm.eureka.eurekaclient;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
 @Controller
-@RequestMapping("/hell")
-
 public class ClientController {
 
 	@Autowired
 	private RestTemplate restTemplate;
 
-	@RequestMapping("/helloo")
-	public String deposit() {
-//		restTemplate.getForEntity("http://localhost:8762/hello", String.class);
-		return "hello";
-	}
+	@RequestMapping("/hello")
+	public String home(Model model) {
 
+		String message = restTemplate.getForObject("http://demo-service/hello", String.class);
+		System.out.println(message);
+		model.addAttribute("message", message);
+		return "hello";
+
+	}
 }

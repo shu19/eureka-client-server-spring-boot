@@ -11,10 +11,5 @@
 <h1>${message}</h1>
 
 
-<form action="withdraw" method="post">
-	Enter Account Number: <input name="accountNumber"/><br/>
-	Enter Amount : <input name="amount"/><br/>
-	<input type="submit"/>
-</form>
 </body>
 </html>

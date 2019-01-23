@@ -1,0 +1,38 @@
+package com.mm.eureka.eurekaclient;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.client.RestTemplate;
+
+@Controller
+@RequestMapping("/hell")
+
+public class ClientController {
+
+	@Autowired
+	private RestTemplate restTemplate;
+
+	@RequestMapping("/helloo")
+	public String deposit() {
+//		restTemplate.getForEntity("http://localhost:8762/hello", String.class);
+		return "hello";
+	}
+
+	@RequestMapping("/hellos")
+	public String home(Model model) {
+
+		String output = restTemplate
+				.exchange("http://demo-service/hello", HttpMethod.GET, null, new ParameterizedTypeReference<String>() {
+				}).getBody();
+
+		// String output = restTeplate.getForObject("http://hello-client",String.class);
+		System.out.println(output);
+		model.addAttribute("message", output);
+		return "hello";
+
+	}
+}
